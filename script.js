@@ -20,12 +20,19 @@ function calculateOffer() {
     for (let i = 0; i < discount_code_list.length; i++) {
         if (discount_code_html === discount_code_list[i]) {
             console.log("Codice inserito valido = " + discount_code_list[i]);
-            document.getElementById("voucher_app").innerHTML = `Codice sconto del 25% inserito`
+            document.getElementById("voucher_app").innerHTML = `Codice sconto del 25% applicato`
+            document.getElementById("voucher_app").className = "text-success";
+            document.getElementById("discount-code").className = "text-success form-control";
             discountApplied = true;
             break; // Interrompe il ciclo quando trova un codice valido
-        } else if (discount_code_html !== discount_code_list[i]) {
+        } else if (discount_code_html !== "" && discount_code_html !== discount_code_list[i]) {
             console.log("Codice inserito non valido = " + discount_code_list[i]);
-            document.getElementById("voucher_app").innerHTML = `Codice sconto non inserito o non funzionante`
+            document.getElementById("voucher_app").innerHTML = `Codice sconto non valido o non più funzionante`
+            document.getElementById("voucher_app").className = "text-danger";
+            document.getElementById("discount-code").className = "text-danger form-control";
+        } else if (discount_code_html === "") {
+            console.log("Codice inserito non valido = " + discount_code_list[i]);
+            document.getElementById("voucher_app").innerHTML = `Codice sconto non inserito`
         }
     }
 
