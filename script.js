@@ -51,7 +51,7 @@ function calculateOffer() {
     }
 
     // Stampa il risultato
-    if (!isNaN(hours) && hours >=1) {
+    if (!isNaN(hours) && hours >= 1) {
         if (type_of_work == "1") {
             console.log("Valore scelto = 1 (Backend Development)");
             console.log("Prezzo Backend = " + backend_total_value.toFixed(2));
@@ -60,7 +60,7 @@ function calculateOffer() {
             console.log("Valore scelto = 2 (Frontend Development)");
             console.log("Prezzo Frontend = " + frontend_total_value.toFixed(2));
             document.getElementById("price").innerHTML = `Il prezzo finale è di ${frontend_total_value.toFixed(2)} €`
-    
+
         } else if (type_of_work == "3") {
             console.log("Valore scelto = 3 (Project Analysis)");
             console.log("Prezzo Analysis = " + analysis_total_value.toFixed(2));
@@ -69,11 +69,63 @@ function calculateOffer() {
             console.log("Inserisci un valore valido per il tipo di lavoro");
             document.getElementById("price").innerHTML = `Inserisci un valore valido per il tipo di lavoro`
         }
-    } else 
+    } else
         document.getElementById("price").innerHTML = `Inserisci un valore valido per le ore`
 
-    
+
 }
 
+
+
+
+
+
+
+websites = [
+    {
+        website_name: "Cabin Website",
+        img: "img/portfolio/cabin.png"
+    },
+    {
+        website_name: "Cake Website",
+        img: "img/portfolio/cake.png"
+    },
+    {
+        website_name: "Circus Website",
+        img: "img/portfolio/circus.png"
+    },
+    {
+        website_name: "Game Website",
+        img: "img/portfolio/game.png"
+    },
+    {
+        website_name: "Safe Website",
+        img: "img/portfolio/safe.png"
+    },
+    {
+        website_name: "Submarine Website",
+        img: "img/portfolio/submarine.png"
+    },
+]
+
+
+for (let i = 0; i < websites.length; i++) {
+
+document.getElementById("card_generation").innerHTML += 
+`          
+<div class="col-md-6 col-lg-4 mb-5">
+    <div class="card">
+        <img class="card-img-top" src="${websites[i].img}" alt="${websites[i].website_name}">
+        <div class="card-body text-center">
+            <h5>${websites[i].website_name}</h5>
+            <a href="#" class="card-link btn btn-info">Preview</a>
+            <a href="#" class="card-link btn btn-outline-info">Visit site</a>
+        </div>
+    </div>
+</div>
+
+`
+
+}
 
 
