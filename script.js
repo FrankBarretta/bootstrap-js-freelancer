@@ -23,6 +23,8 @@ function calculateOffer() {
             document.getElementById("voucher_app").innerHTML = `Codice sconto del 25% applicato`
             document.getElementById("voucher_app").className = "text-success";
             document.getElementById("discount-code").className = "text-success form-control";
+            //discount_code_list.indexOf(discount_code_list[i]);
+            discount_code_list.splice(i, 1);
             discountApplied = true;
             break; // Interrompe il ciclo quando trova un codice valido
         } else if (discount_code_html !== "" && discount_code_html !== discount_code_list[i]) {
