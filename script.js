@@ -20,8 +20,12 @@ function calculateOffer() {
     for (let i = 0; i < discount_code_list.length; i++) {
         if (discount_code_html === discount_code_list[i]) {
             console.log("Codice inserito valido = " + discount_code_list[i]);
+            document.getElementById("voucher_app").innerHTML = `Codice sconto del 25% inserito`
             discountApplied = true;
             break; // Interrompe il ciclo quando trova un codice valido
+        } else if (discount_code_html !== discount_code_list[i]) {
+            console.log("Codice inserito non valido = " + discount_code_list[i]);
+            document.getElementById("voucher_app").innerHTML = `Codice sconto non inserito o non funzionante`
         }
     }
 
@@ -38,18 +42,29 @@ function calculateOffer() {
     }
 
     // Stampa il risultato
-    if (type_of_work == "1") {
-        console.log("Valore scelto = 1 (Backend Development)");
-        console.log("Prezzo Backend = " + backend_total_value.toFixed(2));
-    } else if (type_of_work == "2") {
-        console.log("Valore scelto = 2 (Frontend Development)");
-        console.log("Prezzo Frontend = " + frontend_total_value.toFixed(2));
-    } else if (type_of_work == "3") {
-        console.log("Valore scelto = 3 (Project Analysis)");
-        console.log("Prezzo Analysis = " + analysis_total_value.toFixed(2));
-    } else {
-        console.log("Inserisci un valore valido");
-    }
+    if (!isNaN(hours) && hours >=1) {
+        if (type_of_work == "1") {
+            console.log("Valore scelto = 1 (Backend Development)");
+            console.log("Prezzo Backend = " + backend_total_value.toFixed(2));
+            document.getElementById("price").innerHTML = `Il prezzo finale è di ${backend_total_value.toFixed(2)} €`
+        } else if (type_of_work == "2") {
+            console.log("Valore scelto = 2 (Frontend Development)");
+            console.log("Prezzo Frontend = " + frontend_total_value.toFixed(2));
+            document.getElementById("price").innerHTML = `Il prezzo finale è di ${frontend_total_value.toFixed(2)} €`
+    
+        } else if (type_of_work == "3") {
+            console.log("Valore scelto = 3 (Project Analysis)");
+            console.log("Prezzo Analysis = " + analysis_total_value.toFixed(2));
+            document.getElementById("price").innerHTML = `Il prezzo finale è di ${analysis_total_value.toFixed(2)} €`
+        } else {
+            console.log("Inserisci un valore valido per il tipo di lavoro");
+            document.getElementById("price").innerHTML = `Inserisci un valore valido per il tipo di lavoro`
+        }
+    } else 
+        document.getElementById("price").innerHTML = `Inserisci un valore valido per le ore`
+
+    
 }
+
 
 
